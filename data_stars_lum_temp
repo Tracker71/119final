@@ -17,7 +17,6 @@ import numpy as np
 # =============================================================================
 #                           File/Directory Parmeters
 # =============================================================================
-
 file_in = './Data/hygdata_v3.csv'
 dir_in  = './Data'
 
@@ -26,8 +25,14 @@ hyg_ptdata = np.genfromtxt( file_in, dtype = float, delimiter = ',', skip_header
 m_X = hyg_ptdata[0]
 m_Y = hyg_ptdata[1]
 m_Z = hyg_ptdata[2]
-
+r= (m_X**2+m_Y**2+m_Z**2)**.5
 
 fig1 = plt.figure(1, figsize=(100,100))
 ax = axes3d.Axes3D(fig1)
 ax.scatter( m_X, m_Y, m_Z, c='r', marker='o')
+
+hyg_vptdata= np.genfromtxt( file_in, dtype = float, delimiter = ',', skip_header = 1, usecols = (20,21,22)).T
+m_vX = hyg_vptdata[0]
+m_vY = hyg_vptdata[1]
+m_vZ = hyg_vptdata[2]
+
